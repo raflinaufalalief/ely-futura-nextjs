@@ -31,8 +31,8 @@ const Profile = () => {
               {/*  */}
 
               <div className="pt-56">
-                <div className="flex items-center justify-center mt-2 space-x-2">
-                  <h1 className="text-2xl font-bold leading-normal ">
+                <div className="flex items-center justify-center mt-2 space-x-2 ">
+                  <h1 className="text-2xl font-bold leading-normal title ">
                     Ely Futura
                   </h1>
                 </div>

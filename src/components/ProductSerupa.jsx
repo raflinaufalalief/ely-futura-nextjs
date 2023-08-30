@@ -1,71 +1,78 @@
-import Link from "next/link"
-import { useEffect, useState } from "react"
-import { BiBath, BiBed } from "react-icons/bi"
+import React, { useEffect, useState } from "react"
 import Carousel from "react-multi-carousel"
 import "react-multi-carousel/lib/styles.css"
-// In getServerSideProps
+import Link from "next/link"
+import { BiBath, BiBed } from "react-icons/bi"
 import API_URL from "../pages/api/products"
+import { useRouter } from "next/router"
 
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 3,
-    slidesToSlide: 1, // optional, default to 1.
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 1,
-    slidesToSlide: 2, // optional, default to 1.
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-    slidesToSlide: 1, // optional, default to 1.
-  },
-}
+function ProductSerupa() {
+  const router = useRouter()
+  const queryType = router.query.type
+  const [filteredProducts, setFilteredProducts] = useState([])
 
-function Product({ initialProducts }) {
-  const [products, setProducts] = useState(initialProducts)
+  async function fetchFilteredProducts(type) {
+    try {
+      const response = await fetch(API_URL)
+      const data = await response.json()
+      const filteredData = data.products.filter((product) =>
+        product.type.some((productType) => productType.name === type)
+      )
+      return filteredData
+    } catch (error) {
+      console.error("Error fetching data:", error)
+      return []
+    }
+  }
 
   useEffect(() => {
     async function fetchData() {
-      try {
-        const response = await fetch(API_URL)
-        const apiData = await response.json()
-        setProducts(apiData.products)
-      } catch (error) {
-        console.error("Error fetching data:", error)
-      }
+      const filteredData = await fetchFilteredProducts(queryType)
+      setFilteredProducts(filteredData)
     }
 
-    if (!initialProducts || initialProducts.length === 0) {
-      fetchData()
-    }
-  }, [])
+    fetchData()
+  }, [queryType])
 
-  if (!products) {
-    return <div>Loading...</div>
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+      slidesToSlide: 3,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+      slidesToSlide: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1,
+    },
   }
 
   return (
     <section>
-      <div className="px-4 mx-auto containers">
-        <div className="">
-          <div className="px-4 mb-5 title">Property Terbaru</div>
-          <div className="ListinganTerbaru">
+      <div className="mx-auto containers">
+        <div>
+          <div className="px-5 mb-3 text-xl font-medium title">
+            Property Serupa
+          </div>
+          <div className="ListinganRuko">
             <Carousel
               additionalTransfrom={0}
               arrows
+              ssr={true}
               autoPlaySpeed={3000}
               centerMode={false}
-              ssr={true}
               className=""
               containerClass="multi-container"
               dotListClass=""
               draggable
               focusOnSelect={false}
               infinite={false}
-              itemClass="px-5"
+              itemClass=""
               keyBoardControl
               minimumTouchDrag={80}
               pauseOnHover
@@ -81,9 +88,9 @@ function Product({ initialProducts }) {
               sliderClass=""
               swipeable
             >
-              {products.map((product) => (
+              {filteredProducts.map((product) => (
                 <div key={product.id}>
-                  <div className="relative w-full mx-auto ">
+                  <div className="relative w-full px-5 mx-auto ">
                     <div className="p-4 bg-white border rounded shadow-lg">
                       <div className="relative flex justify-center overflow-hidden rounded h-52">
                         <div className="w-full transition-transform duration-500 ease-in-out transform hover:scale-110">
@@ -159,7 +166,7 @@ function Product({ initialProducts }) {
                               product.title
                             )}?type=${encodeURIComponent(
                               product.type[0].name
-                            )}?kota=${encodeURIComponent(
+                            )}&kota=${encodeURIComponent(
                               product.kota[0].name
                             )}`}
                           >
@@ -181,24 +188,4 @@ function Product({ initialProducts }) {
   )
 }
 
-export async function getServerSideProps() {
-  try {
-    const response = await fetch(API_URL)
-    const apiData = await response.json()
-
-    return {
-      props: {
-        initialProducts: apiData.products,
-      },
-    }
-  } catch (error) {
-    console.error("Error fetching data:", error)
-    return {
-      props: {
-        initialProducts: [],
-      },
-    }
-  }
-}
-
-export default Product
+export default ProductSerupa

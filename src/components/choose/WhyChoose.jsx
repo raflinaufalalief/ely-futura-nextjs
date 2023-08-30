@@ -44,7 +44,7 @@ export default function WhyChoose() {
             </div>
             <div className="mt-6 Sdesktop:mt-6 mobile:mt-0 Sdesktop:ml-0">
               <div className="mt-4">
-                <Image src={image2} alt="" className="w-[50px]" />
+                <Image src={image2} alt="title" className="w-[50px]" />
                 <h1 className="mt-4 title">Agen Profesional</h1>
                 <p className="mt-4 subtitle">
                   Dengan pengetahuan luas tentang pasar properti dan pengalaman

@@ -15,16 +15,16 @@ const Filter = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://staging-api.punyaasset.com/api/produk-rafli/api/listings"
+          "https://staging-api.punyaasset.com/api/produk-rafli"
         )
         const apiData = await response.json()
-        setData(apiData)
+        setData(apiData.products)
       } catch (error) {
         console.error(error)
       }
     }
 
-    console.log(fetchData)
+    fetchData() // Call the fetchData function to actually fetch data
   }, [])
 
   const handleLocationChange = (e) => {
@@ -62,17 +62,16 @@ const Filter = () => {
 
     router.push(`/all-listings?${queryParams.toString()}`)
   }
-
-  const uniqueAreas = [...new Set(data.map((item) => item.area))]
-  const uniqueTypeProp = [...new Set(data.map((item) => item.type))]
+  const uniqueAreas = [...new Set(data.map((item) => item.kota[0]?.name))]
+  const uniqueTypeProp = [...new Set(data.map((item) => item.type[0]?.name))]
   const uniqueConditionProp = [
-    ...new Set(data.map((item) => item.type_property)),
+    ...new Set(data.map((item) => item.typeproperty[0]?.name)),
   ]
-  const uniqueFor = [...new Set(data.map((item) => item.for))]
+  const uniqueFor = [...new Set(data.map((item) => item.market))]
 
   return (
-    <div className="pb-10">
-      <div className="px-[35px] py-6 max-w-[1170px] mx-auto flex mobile:flex-col-reverse Sdesktop:flex-col justify-between gap-4 Sdesktop:gap-x-3 relative Sdesktop:-top-14 Sdesktop:shadow  bg-[#BAE5FE] Sdesktop:backdrop-blur rounded-lg ">
+    <div className="pb-10 Sdesktop:pb-0">
+      <div className="px-[35px] py-6 max-w-[1170px] mx-auto flex mobile:flex-col-reverse Sdesktop:flex-col justify-between gap-4 Sdesktop:gap-x-3 relative Sdesktop:-top-14 Sdesktop:shadow bg-[#BAE5FE] Sdesktop:backdrop-blur rounded-lg ">
         <form onSubmit={handleSubmit}>
           <div className="flex justify-between mobile:flex-col gap-y-5 gap-x-5">
             <select
@@ -81,11 +80,12 @@ const Filter = () => {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
             >
               <option value="">Pilih Lokasi</option>
-              {uniqueAreas.map((area, index) => (
-                <option key={index} value={area}>
-                  {area}
-                </option>
-              ))}
+              {data.length > 0 &&
+                uniqueAreas.map((area, index) => (
+                  <option key={index} value={area}>
+                    {area}
+                  </option>
+                ))}
             </select>
             <select
               value={selectedTypeProperty}
@@ -93,11 +93,12 @@ const Filter = () => {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             >
               <option value="">Pilih Type Property</option>
-              {uniqueTypeProp.map((type, index) => (
-                <option key={index} value={type}>
-                  {type}
-                </option>
-              ))}
+              {data.length > 0 &&
+                uniqueTypeProp.map((type, index) => (
+                  <option key={index} value={type}>
+                    {type}
+                  </option>
+                ))}
             </select>
             <select
               value={selectedConditionProp}
@@ -105,11 +106,12 @@ const Filter = () => {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
             >
               <option value="">Pilih Type</option>
-              {uniqueConditionProp.map((condition, index) => (
-                <option key={index} value={condition}>
-                  {condition}
-                </option>
-              ))}
+              {data.length > 0 &&
+                uniqueConditionProp.map((condition, index) => (
+                  <option key={index} value={condition}>
+                    {condition}
+                  </option>
+                ))}
             </select>
             <select
               value={selectedFor}
@@ -117,11 +119,12 @@ const Filter = () => {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
             >
               <option value="">Pilihan Menu</option>
-              {uniqueFor.map((menuItem, index) => (
-                <option key={index} value={menuItem}>
-                  {menuItem}
-                </option>
-              ))}
+              {data.length > 0 &&
+                uniqueFor.map((menuItem, index) => (
+                  <option key={index} value={menuItem}>
+                    {menuItem.replace(/\[|\]|"/g, "").replace(/,/g, "/")}
+                  </option>
+                ))}
             </select>
             <button
               type="submit"

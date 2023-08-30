@@ -19,9 +19,8 @@ const AboutHero = () => {
             <p className="px-2 tracking-tight subtitle">
               Ely Futura adalah perusahaan properti yang berfokus pada
               pengembangan dan pemasaran properti dengan berbagai jenis dan
-              segmen. Mereka memiliki portofolio yang mencakup berbagai macam
-              proyek, mulai dari perumahan, apartemen, komersial, dan properti
-              lainnya.
+              segmen. Memiliki portofolio yang mencakup berbagai macam proyek,
+              mulai dari perumahan, apartemen, komersial, dan properti lainnya.
             </p>
             <Image
               className=" mobile:hidden absolute left-0 object-cover w-full  mt-0 -top-20 -z-10 h-[500px] brightness-[.4]"

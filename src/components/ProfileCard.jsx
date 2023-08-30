@@ -7,8 +7,8 @@ import Image from "next/image"
 const ProfileCard = ({ pesanwa }) => {
   const pesan = `https://wa.me/+6287789070758?text=Saya ingin beli property ini ${pesanwa}`
   return (
-    <div className="flex flex-col mx-4 border">
-      <div className="mt-10 gap-x-4 rounded-md w-[300px]  mobile:w-full desktop:sticky desktop:top-28 bg-white shadow-lg px-5 py-5 h-fit">
+    <div className="flex flex-col ">
+      <div className=" gap-x-4 border rounded-md w-[300px]  mobile:w-full desktop:sticky desktop:top-28 bg-white shadow-lg px-5 py-5 h-fit">
         <div className="flex items-center justify-center gap-x-3">
           <div>
             <Image src={profile} className="w-24 rounded-md" alt="" />
@@ -24,7 +24,10 @@ const ProfileCard = ({ pesanwa }) => {
         <div className="mobile:sticky">
           <hr className="my-5 rounded-full bg-black/10" />
           <div className="my-5">
-            <a className="flex items-center justify-center w-full py-2 text-sm font-normal bg-transparent border rounded-lg shadow-md gap-x-2 hover:bg-slate-200 ">
+            <a
+              href="tel:+6282233335227"
+              className="flex items-center justify-center w-full py-2 text-sm font-normal bg-transparent border rounded-lg shadow-md gap-x-2 hover:bg-slate-200 "
+            >
               <BsTelephone className="text-lg" />
               +62 822-3333-5227
             </a>

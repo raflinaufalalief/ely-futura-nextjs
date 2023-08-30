@@ -5,67 +5,75 @@ import Carousel from "react-multi-carousel"
 import "react-multi-carousel/lib/styles.css"
 // In getServerSideProps
 import API_URL from "../pages/api/products"
+import { useRouter } from "next/router"
 
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 3,
-    slidesToSlide: 1, // optional, default to 1.
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 1,
-    slidesToSlide: 2, // optional, default to 1.
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-    slidesToSlide: 1, // optional, default to 1.
-  },
-}
-
-function Product({ initialProducts }) {
-  const [products, setProducts] = useState(initialProducts)
+export default function ProductSekitar() {
+  const [products, setProducts] = useState([])
+  const router = useRouter()
+  const queryKota = router.query.kota
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchFilteredProducts(kota) {
       try {
         const response = await fetch(API_URL)
-        const apiData = await response.json()
-        setProducts(apiData.products)
+        const data = await response.json()
+        const filteredData = data.products.filter((product) =>
+          product.kota.some((productKota) => productKota.name === kota)
+        )
+        return filteredData
       } catch (error) {
         console.error("Error fetching data:", error)
+        return []
       }
     }
 
-    if (!initialProducts || initialProducts.length === 0) {
-      fetchData()
+    async function fetchData() {
+      const filteredData = await fetchFilteredProducts(queryKota)
+      setProducts(filteredData)
     }
-  }, [])
 
-  if (!products) {
-    return <div>Loading...</div>
+    fetchData()
+  }, [queryKota])
+
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+      slidesToSlide: 3,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+      slidesToSlide: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1,
+    },
   }
 
   return (
-    <section>
-      <div className="px-4 mx-auto containers">
-        <div className="">
-          <div className="px-4 mb-5 title">Property Terbaru</div>
-          <div className="ListinganTerbaru">
+    <section className="py-0">
+      <div className="mx-auto containers">
+        <div>
+          <div className="px-5 mb-3 text-xl font-medium title">
+            Property Sekitar
+          </div>
+          <div className="ListinganRuko">
             <Carousel
               additionalTransfrom={0}
               arrows
+              ssr={true}
               autoPlaySpeed={3000}
               centerMode={false}
-              ssr={true}
               className=""
               containerClass="multi-container"
               dotListClass=""
               draggable
               focusOnSelect={false}
               infinite={false}
-              itemClass="px-5"
+              itemClass=""
               keyBoardControl
               minimumTouchDrag={80}
               pauseOnHover
@@ -83,7 +91,7 @@ function Product({ initialProducts }) {
             >
               {products.map((product) => (
                 <div key={product.id}>
-                  <div className="relative w-full mx-auto ">
+                  <div className="relative w-full px-5 mx-auto ">
                     <div className="p-4 bg-white border rounded shadow-lg">
                       <div className="relative flex justify-center overflow-hidden rounded h-52">
                         <div className="w-full transition-transform duration-500 ease-in-out transform hover:scale-110">
@@ -159,7 +167,7 @@ function Product({ initialProducts }) {
                               product.title
                             )}?type=${encodeURIComponent(
                               product.type[0].name
-                            )}?kota=${encodeURIComponent(
+                            )}&kota=${encodeURIComponent(
                               product.kota[0].name
                             )}`}
                           >
@@ -180,25 +188,3 @@ function Product({ initialProducts }) {
     </section>
   )
 }
-
-export async function getServerSideProps() {
-  try {
-    const response = await fetch(API_URL)
-    const apiData = await response.json()
-
-    return {
-      props: {
-        initialProducts: apiData.products,
-      },
-    }
-  } catch (error) {
-    console.error("Error fetching data:", error)
-    return {
-      props: {
-        initialProducts: [],
-      },
-    }
-  }
-}
-
-export default Product

@@ -1,14 +1,26 @@
 import React from "react"
+import Carousel from "react-multi-carousel"
+import "react-multi-carousel/lib/styles.css"
 import { hope } from "../data/data"
-import { BsArrowRight } from "react-icons/bs"
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Autoplay } from "swiper/modules"
-
-import "swiper/css"
-import "swiper/css/autoplay"
-import Link from "next/link"
 import Image from "next/image"
 
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+    slidesToSlide: 3, // optional, default to 1.
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+    slidesToSlide: 2, // optional, default to 1.
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+    slidesToSlide: 1, // optional, default to 1.
+  },
+}
 const OurHope = () => {
   return (
     <section className="bg-gradient-to-br from-[#e4f9ff] via-[#ffffff] to-[#e5f3f6]">
@@ -29,57 +41,46 @@ const OurHope = () => {
         </div>
         {/* end section */}
         <>
-          <Swiper
-            modules={[Autoplay]}
-            autoplay={{
-              delay: 3500,
-              disableOnInteraction: false,
-            }}
-            slidesPerView={1}
-            spaceBetween={30}
-            breakpoints={{
-              640: {
-                slidesPerView: 1,
-                spaceBetween: 10,
-              },
-              768: {
-                slidesPerView: 2,
-                spaceBetween: 30,
-              },
-              1024: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-              },
-              1170: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-              },
-            }}
+          <Carousel
+            swipeable={false}
+            draggable={false}
+            showDots={false}
+            responsive={responsive}
+            ssr={true} // means to render carousel on server-side.
+            infinite={true}
+            autoPlaySpeed={1000}
+            keyBoardControl={true}
+            customTransition="all .5"
+            transitionDuration={500}
+            containerClass="carousel-container"
+            removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
+            dotListClass="custom-dot-list-style"
+            itemClass="px-2"
           >
             {hope.map((result, index) => {
               const { name, image, text } = result
               return (
-                <SwiperSlide
-                  className="w-full px-4 mt-5 border rounded-md shadow-md pt-9"
+                <div
+                  className="w-full px-4 mt-5 rounded-md shadow-md pt-9 "
                   key={index}
                 >
-                  <div className="mx-auto mb-10 max-w-[500px] mobile:max-w-[300px]  ">
+                  <div className="mx-auto  mb-10 max-w-[500px] mobile:max-w-[300px]  ">
                     <div className="mb-8 overflow-hidden rounded-md">
-                      <Image src={image} alt="image" />
+                      <Image src={image} alt="..." className="px-5" />
                     </div>
                     <div>
                       <h3 className="mb-4 text-xl font-semibold text-primary mobile:text-xl Sdesktop:text-xl">
                         {name}
                       </h3>
-                      <p className="mobile:text-base Sdesktop:text-base Sdesktop:h-36 mobile:h-32 text-secondary">
+                      <p className="h-40 mobile:text-base Sdesktop:text-base text-secondary">
                         {text}
                       </p>
                     </div>
                   </div>
-                </SwiperSlide>
+                </div>
               )
             })}
-          </Swiper>
+          </Carousel>
         </>
       </div>
     </section>

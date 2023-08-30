@@ -25,7 +25,7 @@ const CTA = () => {
               </div>
             </div>
             <div className="flex items-center">
-              <div className="flex items-center max-w-sm mx-0 mt-5 Sdesktop:max-w-full gap-x-2 Sdesktop:gap-x-6">
+              <div className="flex items-center max-w-sm mx-0 mt-5 cursor-pointer Sdesktop:max-w-full gap-x-2 Sdesktop:gap-x-6">
                 <Link href="/all-listings">
                   <button className="flex items-center justify-center mx-auto Sdesktop:mx-0 btn-sm Sdesktop:btn-md btn-accent Sdesktop:gap-x-4 mobile:gap-x-2">
                     Selengkapnya <BsArrowRight />
@@ -44,7 +44,7 @@ const CTA = () => {
               <Image
                 className="object-cover w-full h-full rounded-md"
                 src={home3}
-                alt=""
+                alt="title"
               />
             </div>
           </div>
@@ -53,14 +53,14 @@ const CTA = () => {
               <Image
                 className="object-cover w-full h-full mx-auto rounded-md"
                 src={home2}
-                alt=""
+                alt="title"
               />
             </div>
             <div className="h-40 overflow-hidden rounded-md shadow-lg bg-pink-600/60">
               <Image
                 className="object-cover w-full h-full mx-auto rounded-md"
                 src={home}
-                alt=""
+                alt="title"
               />
             </div>
           </div>

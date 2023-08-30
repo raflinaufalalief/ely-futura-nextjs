@@ -10,6 +10,7 @@ const ContactUs = () => {
         <Image
           className="absolute object-cover w-full h-full bg-gray-700 bg-center rounded-lg bg-blend-multiply "
           src={contact}
+          alt="title"
         />
         <div className="rounded-lg text-primary Sdesktop:w-1/2">
           <div className="bg-[#BAE5FE] bg-opacity-95 p-5 opacity-90 backdrop-blur-lg rounded-lg Sdesktop:p-12 ">

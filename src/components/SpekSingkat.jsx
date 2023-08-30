@@ -8,7 +8,7 @@ const SpekSingkat = ({ props }) => {
         <div className="flex flex-col items-center justify-center px-3 py-2 text-center bg-white rounded-md shadow-lg">
           <h1 className="text-sm font-semibold text-black/70">L.Bangunan</h1>
           <p className="text-sm text-medium text-black/60">
-            {props?.luas_bangunan}
+            {props.luas_bangunan}
           </p>
         </div>
 
