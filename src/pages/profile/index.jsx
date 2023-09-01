@@ -23,7 +23,7 @@ const Profile = () => {
                     <Image
                       alt="profile"
                       src={profile}
-                      className="absolute h-auto -ml-20 pt-10 align-middle border-none rounded-full shadow-xl  max-w-[150px]"
+                      className="absolute h-auto -ml-20 pt-10 align-middle border-none rounded-full   max-w-[150px]"
                     />
                   </div>
                 </div>
