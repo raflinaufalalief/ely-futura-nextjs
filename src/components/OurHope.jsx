@@ -42,20 +42,32 @@ const OurHope = () => {
         {/* end section */}
         <>
           <Carousel
-            swipeable={false}
-            draggable={false}
-            showDots={false}
+            additionalTransfrom={0}
+            arrows
+            autoPlaySpeed={3000}
+            centerMode={false}
+            ssr={true}
+            className=""
+            containerClass="multi-container"
+            dotListClass=""
+            draggable
+            focusOnSelect={false}
+            infinite={false}
+            itemClass="Sdesktop:px-5 tablet:px-4 px-0 "
+            keyBoardControl
+            minimumTouchDrag={80}
+            pauseOnHover
+            renderArrowsWhenDisabled={false}
+            renderButtonGroupOutside={false}
+            renderDotsOutside={false}
             responsive={responsive}
-            ssr={true} // means to render carousel on server-side.
-            infinite={true}
-            autoPlaySpeed={1000}
-            keyBoardControl={true}
-            customTransition="all .5"
-            transitionDuration={500}
-            containerClass="carousel-container"
-            removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
-            dotListClass="custom-dot-list-style"
-            itemClass="px-2"
+            rewind={false}
+            rewindWithAnimation={false}
+            rtl={false}
+            shouldResetAutoplay
+            showDots={false}
+            sliderClass=""
+            swipeable
           >
             {hope.map((result, index) => {
               const { name, image, text } = result
@@ -66,15 +78,13 @@ const OurHope = () => {
                 >
                   <div className="mx-auto  mb-10 max-w-[500px] mobile:max-w-[300px]  ">
                     <div className="mb-8 overflow-hidden rounded-md">
-                      <Image src={image} alt="..." className="px-5" />
+                      <Image src={image} alt="..." />
                     </div>
                     <div>
-                      <h3 className="mb-4 text-xl font-semibold text-primary mobile:text-xl Sdesktop:text-xl">
+                      <h3 className="mb-4 text-lg font-semibold text-primary ">
                         {name}
                       </h3>
-                      <p className="h-40 mobile:text-base Sdesktop:text-base text-secondary">
-                        {text}
-                      </p>
+                      <p className="h-40 text-base text-secondary">{text}</p>
                     </div>
                   </div>
                 </div>

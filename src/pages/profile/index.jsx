@@ -6,7 +6,7 @@ import Image from "next/image"
 
 const Profile = () => {
   return (
-    <>
+    <section className="pt-0">
       {/* <!-- component --> */}
       <div className="relative block h-[500px] w-full">
         <div className="absolute top-0 w-full h-full bg-center bg-no-repeat bg-cover bg-profile-bg">
@@ -74,7 +74,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
-    </>
+    </section>
   )
 }
 

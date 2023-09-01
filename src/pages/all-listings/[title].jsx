@@ -72,8 +72,8 @@ function ProductDetail({ initialProduct }) {
     <section className="mobile:py-16 tablet:py-16">
       <div className="mx-auto containers">
         {/* <!-- Breadcrumb --> */}
-        <div className="px-4">
-          <nav className="flex px-5 py-3 mb-5 border border-gray-200 rounded-lg w-fit text-primary bg-gray-50 ">
+        <div className="Sdesktop:px-4">
+          <nav className="flex mt-4 mb-4 text-primary">
             <ol className="inline-flex items-center space-x-1 md:space-x-3">
               <li className="flex items-center">
                 <Link

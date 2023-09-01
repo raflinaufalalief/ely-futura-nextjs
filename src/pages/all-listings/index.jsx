@@ -1,37 +1,20 @@
 import FilterProduct from "@/components/FilterProduct"
 import Link from "next/link"
 import { useRouter } from "next/router"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { BiBath, BiBed } from "react-icons/bi"
 import ReactPaginate from "react-paginate"
 import { IoAlertCircleOutline } from "react-icons/io5"
 import { RiArrowLeftDoubleFill, RiArrowRightDoubleFill } from "react-icons/ri"
 
 function Alllistings({ initialProducts }) {
-  const [products, setProducts] = useState(initialProducts)
   const [currentPage, setCurrentPage] = useState(0)
 
   const router = useRouter()
   const { query } = router
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch(`${process.env.NEXT_URL}/api/produk-rafli`)
-        const apiData = await response.json()
-        setProducts(apiData.products)
-      } catch (error) {
-        console.error("Error fetching data:", error)
-      }
-    }
-
-    if (initialProducts.length === 0) {
-      fetchData()
-    }
-  }, [])
-
-  const itemsPerPage = 12
-  const filteredProducts = products.filter((product) => {
+  const itemsPerPage = 2
+  const filteredProducts = initialProducts.filter((product) => {
     return (
       (!query.location || product.kota[0]?.name === query.location) &&
       (!query.typeProperty || product.type[0]?.name === query.typeProperty) &&
@@ -174,13 +157,13 @@ function Alllistings({ initialProducts }) {
           </div>
         </div>
 
-        <div className="flex justify-center pt-20 Sdesktop:justify-end">
+        <div className="flex justify-center pt-20 mobile:pt-10 Sdesktop:justify-end">
           <ReactPaginate
             previousLabel={
               <RiArrowLeftDoubleFill
                 className={`text-2xl font-bold ${
                   isFirstPage || !isDataAvailable
-                    ? "text-gray-300"
+                    ? "text-gray-300 cursor-not-allowed"
                     : "text-primary"
                 }`}
               />
@@ -189,7 +172,7 @@ function Alllistings({ initialProducts }) {
               <RiArrowRightDoubleFill
                 className={`text-2xl font-bold  ${
                   isLastPage || !isDataAvailable
-                    ? "text-gray-300"
+                    ? "text-gray-300 cursor-not-allowed"
                     : "text-primary"
                 }`}
               />
@@ -204,10 +187,14 @@ function Alllistings({ initialProducts }) {
             pageClassName="px-2 py-1 border text-primary hover:bg-accent/70"
             activeClassName="bg-accent text-white border"
             previousClassName={`px-2 py-1 border rounded-l border-[#ECECEC] ${
-              isFirstPage || !isDataAvailable ? "cursor-not-allowed" : ""
+              isFirstPage || !isDataAvailable
+                ? "cursor-not-allowed"
+                : "hover:bg-accent/70"
             }`}
-            nextClassName={`px-2 py-1 border rounded-r border-[#ECECEC] ${
-              isLastPage || !isDataAvailable ? "cursor-not-allowed" : ""
+            nextClassName={`px-2 py-1 border  rounded-r border-[#ECECEC] ${
+              isLastPage || !isDataAvailable
+                ? "cursor-not-allowed"
+                : "hover:bg-accent/70"
             }`}
           />
         </div>
@@ -216,7 +203,7 @@ function Alllistings({ initialProducts }) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   try {
     const response = await fetch(`${process.env.NEXT_URL}/api/produk-rafli`)
     const apiData = await response.json()
@@ -225,6 +212,7 @@ export async function getServerSideProps() {
       props: {
         initialProducts: apiData.products,
       },
+      revalidate: 10,
     }
   } catch (error) {
     console.error("Error fetching data:", error)

@@ -14,7 +14,7 @@ const responsive = {
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 1,
+    items: 2,
     slidesToSlide: 2, // optional, default to 1.
   },
   mobile: {
@@ -38,9 +38,7 @@ function Product({ initialProducts }) {
       }
     }
 
-    if (!initialProducts || initialProducts.length === 0) {
-      fetchData()
-    }
+    fetchData()
   }, [])
 
   if (!products) {
@@ -65,7 +63,7 @@ function Product({ initialProducts }) {
               draggable
               focusOnSelect={false}
               infinite={false}
-              itemClass="px-5"
+              itemClass="Sdesktop:px-5 tablet:px-4 px-0 "
               keyBoardControl
               minimumTouchDrag={80}
               pauseOnHover
@@ -179,26 +177,6 @@ function Product({ initialProducts }) {
       </div>
     </section>
   )
-}
-
-export async function getServerSideProps() {
-  try {
-    const response = await fetch(API_URL)
-    const apiData = await response.json()
-
-    return {
-      props: {
-        initialProducts: apiData.products,
-      },
-    }
-  } catch (error) {
-    console.error("Error fetching data:", error)
-    return {
-      props: {
-        initialProducts: [],
-      },
-    }
-  }
 }
 
 export default Product

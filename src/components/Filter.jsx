@@ -128,7 +128,7 @@ const Filter = () => {
             </select>
             <button
               type="submit"
-              className="Sdesktop:w-[300px] py-2 text-base font-semibold text-white bg-blue-700 rounded-md "
+              className="Sdesktop:w-[300px] w-full py-2 text-base font-semibold text-white bg-blue-700 rounded-md "
             >
               Cari
             </button>

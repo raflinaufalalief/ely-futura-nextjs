@@ -52,7 +52,7 @@ const PropertyForm = () => {
   }
 
   return (
-    <section>
+    <section className="bg-gray-100 ">
       <div className="px-4 pt-10 mx-auto containers">
         <div className="flex flex-col items-center justify-center">
           <h1 className="mb-3 text-3xl font-semibold text-center title ">
@@ -64,23 +64,23 @@ const PropertyForm = () => {
             formulir di bawah ini.
           </p>
         </div>
-        <div className="p-4 bg-gray-100 rounded-md shadow-md ">
+        <div className="p-4 bg-white rounded shadow-md ">
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label className="block mb-1">Judul Iklan:</label>
               <input
-                className="w-full px-3 py-2 border rounded-md"
+                className="w-full px-3 py-2 border rounded"
                 type="text"
                 value={judulIklan}
                 onChange={(e) => setJudulIklan(e.target.value)}
                 required
               />
             </div>
-            <div className="Sdesktop:grid Sdesktop:grid-cols-3 Sdesktop:gap-3">
+            <div className="Sdesktop:grid Sdesktop:grid-cols-3 Sdesktop:gap-6">
               <div className="mb-4">
                 <label className="block mb-1">Kategori:</label>
                 <select
-                  className="w-full px-3 py-2 border rounded-md"
+                  className="w-full px-3 py-2 border rounded"
                   value={kategori}
                   onChange={(e) => setKategori(e.target.value)}
                   required
@@ -97,7 +97,7 @@ const PropertyForm = () => {
               <div className="mb-4">
                 <label className="block mb-1">Kondisi:</label>
                 <select
-                  className="w-full px-3 py-2 border rounded-md"
+                  className="w-full px-3 py-2 border rounded"
                   value={product}
                   onChange={(e) => setProduct(e.target.value)}
                   required
@@ -109,7 +109,7 @@ const PropertyForm = () => {
               <div className="mb-4">
                 <label className="block mb-1">Status Pemasaran:</label>
                 <select
-                  className="w-full px-3 py-2 border rounded-md"
+                  className="w-full px-3 py-2 border rounded"
                   value={jenisTransaksi}
                   onChange={(e) => setJenisTransaksi(e.target.value)}
                   required
@@ -122,7 +122,7 @@ const PropertyForm = () => {
               <div className="mb-4">
                 <label className="block mb-1">Harga:</label>
                 <input
-                  className="w-full px-3 py-2 border rounded-md"
+                  className="w-full px-3 py-2 border rounded"
                   type="text"
                   value={harga}
                   onChange={(e) => setHarga(e.target.value)}
@@ -132,7 +132,7 @@ const PropertyForm = () => {
               <div className="mb-4">
                 <label className="block mb-1">Sertifikat:</label>
                 <input
-                  className="w-full px-3 py-2 border rounded-md"
+                  className="w-full px-3 py-2 border rounded"
                   type="text"
                   value={sertifikat}
                   onChange={(e) => setSertifikat(e.target.value)}
@@ -142,7 +142,7 @@ const PropertyForm = () => {
               <div className="mb-4">
                 <label className="block mb-1">Kamar Mandi:</label>
                 <input
-                  className="w-full px-3 py-2 border rounded-md"
+                  className="w-full px-3 py-2 border rounded"
                   type="text"
                   value={kamarMandi}
                   onChange={(e) => setKamarMandi(e.target.value)}
@@ -152,7 +152,7 @@ const PropertyForm = () => {
               <div className="mb-4">
                 <label className="block mb-1">Kamar Tidur:</label>
                 <input
-                  className="w-full px-3 py-2 border rounded-md"
+                  className="w-full px-3 py-2 border rounded"
                   type="text"
                   value={kamarTidur}
                   onChange={(e) => setKamarTidur(e.target.value)}
@@ -162,7 +162,7 @@ const PropertyForm = () => {
               <div className="mb-4">
                 <label className="block mb-1">Luas Tanah:</label>
                 <input
-                  className="w-full px-3 py-2 border rounded-md"
+                  className="w-full px-3 py-2 border rounded"
                   type="text"
                   value={luasTanah}
                   onChange={(e) => setLuasTanah(e.target.value)}
@@ -172,7 +172,7 @@ const PropertyForm = () => {
               <div className="mb-4">
                 <label className="block mb-1">Luas Bangunan:</label>
                 <input
-                  className="w-full px-3 py-2 border rounded-md"
+                  className="w-full px-3 py-2 border rounded"
                   type="text"
                   value={luasBangunan}
                   onChange={(e) => setLuasBangunan(e.target.value)}
@@ -183,7 +183,7 @@ const PropertyForm = () => {
             <div className="mb-4">
               <label className="block mb-1">Deskripsi:</label>
               <textarea
-                className="w-full px-3 py-2 border rounded-md"
+                className="w-full px-3 py-2 border rounded"
                 value={deskripsi}
                 onChange={(e) => setDeskripsi(e.target.value)}
                 rows="4"
@@ -192,7 +192,7 @@ const PropertyForm = () => {
             </div>
 
             <button
-              className="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600"
+              className="px-4 py-2 text-white rounded bg-accent hover:bg-accent/70"
               type="submit"
             >
               Kirim ke WhatsApp

@@ -94,7 +94,7 @@ const Filter = () => {
             </h2>
           </div>
           <div className="flex flex-col justify-between gap-x-5">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between ">
               <h5 className="text-xs font-semibold ">Pilih Lokasi</h5>
               <button
                 type="button"
@@ -117,12 +117,11 @@ const Filter = () => {
                   </option>
                 ))}
             </select>
-            <hr className="my-4 border-t border-black" />
-            <div>
+
+            <div className="mt-2">
               <h5 className="mb-2 text-xs font-semibold ">
                 Pilih Type Property
               </h5>
-
               <select
                 value={selectedTypeProperty}
                 onChange={handleTypePropertyChange}
@@ -138,8 +137,7 @@ const Filter = () => {
               </select>
             </div>
 
-            <hr className="my-4 border-t border-black" />
-            <div>
+            <div className="mt-2 mb-2">
               <h5 className="mb-2 text-xs font-semibold ">Pilih product</h5>
               <select
                 value={selectedConditionProp}
@@ -155,8 +153,8 @@ const Filter = () => {
                   ))}
               </select>
             </div>
-            <hr className="my-4 border-t border-black" />
-            <div>
+
+            <div className="mb-2">
               <h5 className="mb-2 text-xs font-semibold ">Pilih Menu</h5>
               <select
                 value={selectedFor}
@@ -172,7 +170,6 @@ const Filter = () => {
                   ))}
               </select>
             </div>
-            <hr className="my-4 border-t border-black" />
 
             <button
               type="submit"

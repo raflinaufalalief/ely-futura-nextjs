@@ -10,7 +10,7 @@ import Image from "next/image"
 
 export default function WhyChoose() {
   return (
-    <section className="mobile:pt-0 tablet:pt-0">
+    <section>
       <div className="px-4 mx-auto containers">
         <div className="justify-center Sdesktop:flex">
           <div className="Sdesktop:w-8/12 mobile:w-12/12">
@@ -35,7 +35,7 @@ export default function WhyChoose() {
           </div>
           {/* right section */}
           <div className="flex flex-col items-center w-full Sdesktop:ml-6 Sdesktop:mt-0 mt-7 Sdesktop:w-4/12 Sdesktop:flex-col">
-            <div className=" Sdesktop:w-full">
+            <div className="w-full ">
               <Image
                 src={image3}
                 alt="best"
@@ -53,7 +53,7 @@ export default function WhyChoose() {
                   Anda Hubungi kami sekarang!
                 </p>
               </div>
-              <Link href="/profile">
+              <Link href="/about">
                 <div className="flex items-center mx-auto Sdesktop:mx-0 Sdesktop:gap-x-6">
                   <button className="flex items-center justify-center mx-0 btn-sm Sdesktop:btn-md btn-outline Sdesktop:gap-x-4 tablet:gap-x-2 mobile:gap-x-2">
                     Tentang Saya <BsArrowRight />

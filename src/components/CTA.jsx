@@ -15,18 +15,20 @@ const CTA = () => {
           <div className="mb-16">
             <div className="Sdesktop:w-[550px]">
               <h2 className="title">
-                Properti Kualitas Terbaik <br /> yang Dapat Anda Temukan
+                Tawarkan Properti Anda <br /> untuk Dijual/Sewa!
               </h2>
               <div className="pl-3 mt-5 border-l-4 border-accent">
                 <p className="subtitle Sdesktop:w-[500px] ">
-                  Temukan properti kualitas terbaik untuk Anda! Hunian elegan,
-                  desain modern, fasilitas lengkap, dan lingkungan yang aman.
+                  Maksimalkan potensi properti Anda! Dengan menawarkan properti
+                  Anda untuk dijual atau disewakan, Anda dapat mencapai tujuan
+                  finansial Anda. Jangan lewatkan kesempatan ini untuk menjual
+                  atau menyewakan dengan bantuan kami.
                 </p>
               </div>
             </div>
             <div className="flex items-center">
               <div className="flex items-center max-w-sm mx-0 mt-5 cursor-pointer Sdesktop:max-w-full gap-x-2 Sdesktop:gap-x-6">
-                <Link href="/all-listings">
+                <Link href="/titip-jual-sewa">
                   <button className="flex items-center justify-center mx-auto Sdesktop:mx-0 btn-sm Sdesktop:btn-md btn-accent Sdesktop:gap-x-4 mobile:gap-x-2">
                     Selengkapnya <BsArrowRight />
                   </button>

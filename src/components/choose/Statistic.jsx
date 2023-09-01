@@ -5,7 +5,7 @@ const Statistic = () => {
   return (
     <div className="py-20 mobile:pt-14 mobile:py-0">
       <div className="mx-auto containers text-primary">
-        <div className="grid grid-cols-2 Sdesktop:grid-cols-4 mobile:gap-y-6">
+        <div className="grid grid-cols-2 Sdesktop:grid-cols-4 gap-y-6 Sdesktop:gap-y-0">
           {stats.map((item, index) => {
             const { startNumber, endNumber, title, unit } = item
             return (
