@@ -40,6 +40,10 @@
   .btn-link {
     @apply text-accent bg-accent text-xl Sdesktop:text-2xl;
   }
+
+  .carouselItem {
+    @apply pr-10;
+  }
 }
 
 @layer utilities {

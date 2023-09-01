@@ -45,7 +45,7 @@ const PropertyForm = () => {
       `Deskripsi: ${deskripsi}\n`
 
     const whatsappLink = `https://api.whatsapp.com/send?phone=${encodeURIComponent(
-      "+6285648355728"
+      "+6287789070758"
     )}&text=${encodeURIComponent(messageText)}`
 
     window.open(whatsappLink, "_blank")

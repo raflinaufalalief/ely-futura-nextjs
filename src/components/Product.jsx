@@ -63,7 +63,7 @@ function Product({ initialProducts }) {
               draggable
               focusOnSelect={false}
               infinite={false}
-              itemClass="px-4"
+              itemClass=""
               keyBoardControl
               minimumTouchDrag={80}
               pauseOnHover
@@ -78,11 +78,12 @@ function Product({ initialProducts }) {
               shouldResetAutoplay
               showDots={false}
               sliderClass=""
+              slidesToSlide={1}
               swipeable
             >
               {products.map((product) => (
                 <div key={product.id}>
-                  <div className="relative w-full mx-auto ">
+                  <div className="relative w-full px-4 mx-auto ">
                     <div className="p-4 bg-white border rounded shadow-lg">
                       <div className="relative flex justify-center overflow-hidden rounded h-52">
                         <div className="w-full transition-transform duration-500 ease-in-out transform hover:scale-110">

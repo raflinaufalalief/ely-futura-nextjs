@@ -53,7 +53,7 @@ const OurHope = () => {
             draggable
             focusOnSelect={false}
             infinite={false}
-            itemClass="Sdesktop:px-5 tablet:px-4 px-0 "
+            itemClass=""
             keyBoardControl
             minimumTouchDrag={80}
             pauseOnHover
@@ -72,19 +72,21 @@ const OurHope = () => {
             {hope.map((result, index) => {
               const { name, image, text } = result
               return (
-                <div
-                  className="w-full px-4 mt-5 rounded-md shadow-md pt-9 "
-                  key={index}
-                >
-                  <div className="mx-auto  mb-10 max-w-[500px] mobile:max-w-[300px]  ">
-                    <div className="mb-8 overflow-hidden rounded-md">
-                      <Image src={image} alt="..." />
-                    </div>
-                    <div>
-                      <h3 className="mb-4 text-lg font-semibold text-primary ">
-                        {name}
-                      </h3>
-                      <p className="h-40 text-base text-secondary">{text}</p>
+                <div className="px-4">
+                  <div
+                    className="w-full px-4 mt-5 border rounded-md shadow-md pt-9 "
+                    key={index}
+                  >
+                    <div className="mx-auto  mb-10 max-w-[500px] mobile:max-w-[300px]  ">
+                      <div className="mb-8 overflow-hidden rounded-md">
+                        <Image src={image} alt="..." />
+                      </div>
+                      <div>
+                        <h3 className="mb-4 text-lg font-semibold text-primary ">
+                          {name}
+                        </h3>
+                        <p className="h-40 text-base text-secondary">{text}</p>
+                      </div>
                     </div>
                   </div>
                 </div>

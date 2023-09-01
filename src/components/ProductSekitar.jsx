@@ -79,6 +79,7 @@ export default function ProductSekitar() {
               pauseOnHover
               renderArrowsWhenDisabled={false}
               renderButtonGroupOutside={false}
+              removeArrowOnDeviceType={["tablet", "mobile"]}
               renderDotsOutside={false}
               responsive={responsive}
               rewind={false}
@@ -91,7 +92,7 @@ export default function ProductSekitar() {
             >
               {products.map((product) => (
                 <div key={product.id}>
-                  <div className="relative w-full px-5 mx-auto ">
+                  <div className="relative w-full px-4 mx-auto ">
                     <div className="p-4 bg-white border rounded shadow-lg">
                       <div className="relative flex justify-center overflow-hidden rounded h-52">
                         <div className="w-full transition-transform duration-500 ease-in-out transform hover:scale-110">
