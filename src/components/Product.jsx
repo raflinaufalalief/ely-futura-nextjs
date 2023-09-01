@@ -63,10 +63,11 @@ function Product({ initialProducts }) {
               draggable
               focusOnSelect={false}
               infinite={false}
-              itemClass="Sdesktop:px-5 tablet:px-4 px-0 "
+              itemClass="px-4"
               keyBoardControl
               minimumTouchDrag={80}
               pauseOnHover
+              removeArrowOnDeviceType={["tablet", "mobile"]}
               renderArrowsWhenDisabled={false}
               renderButtonGroupOutside={false}
               renderDotsOutside={false}
