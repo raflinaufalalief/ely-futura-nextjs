@@ -51,7 +51,7 @@ const OurHope = () => {
             infinite={true}
             className=""
             containerClass="multi-container"
-            removeArrowOnDeviceType={["tablet", "mobile"]}
+            removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
             dotListClass=""
             draggable
             focusOnSelect={false}

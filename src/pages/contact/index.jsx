@@ -24,7 +24,7 @@ const ContactPage = () => {
         {/* <!-- Text Column --> */}
         <div className="bg-white max-w-Sdesktop Sdesktop:max-w-2xl Sdesktop:z-10 Sdesktop:shadow-lg Sdesktop:absolute Sdesktop:top-0 Sdesktop:mt-48 Sdesktop:w-3/5 Sdesktop:left-0 tablet:mt-20 Sdesktop:ml-20 ">
           {/* <!-- Text Wrapper --> */}
-          <div className="flex flex-col p-10 Sdesktop:px-16 ">
+          <div className="flex flex-col p-10 mobile:p-5 tablet:p-5 Sdesktop:px-16 ">
             <h2 className="uppercase title ">Hubungi Saya</h2>
             <p className="mt-4 subtitle">
               Jika ada pertanyaan atau konsultasi seputar property silahkan
