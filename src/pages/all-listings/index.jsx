@@ -6,6 +6,7 @@ import { BiBath, BiBed } from "react-icons/bi"
 import ReactPaginate from "react-paginate"
 import { IoAlertCircleOutline } from "react-icons/io5"
 import { RiArrowLeftDoubleFill, RiArrowRightDoubleFill } from "react-icons/ri"
+import API_URL from "../api/products"
 
 function Alllistings({ initialProducts }) {
   const [currentPage, setCurrentPage] = useState(0)
@@ -13,7 +14,7 @@ function Alllistings({ initialProducts }) {
   const router = useRouter()
   const { query } = router
 
-  const itemsPerPage = 2
+  const itemsPerPage = 12
   const filteredProducts = initialProducts.filter((product) => {
     return (
       (!query.location || product.kota[0]?.name === query.location) &&
@@ -205,7 +206,7 @@ function Alllistings({ initialProducts }) {
 
 export async function getStaticProps() {
   try {
-    const response = await fetch(`${process.env.NEXT_URL}/api/produk-rafli`)
+    const response = await fetch(API_URL)
     const apiData = await response.json()
 
     return {

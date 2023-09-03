@@ -49,6 +49,7 @@ const OurHope = () => {
             ssr={true}
             className=""
             containerClass="multi-container"
+            removeArrowOnDeviceType={["tablet", "mobile"]}
             dotListClass=""
             draggable
             focusOnSelect={false}
@@ -72,7 +73,7 @@ const OurHope = () => {
             {hope.map((result, index) => {
               const { name, image, text } = result
               return (
-                <div className="px-4">
+                <div className="px-2">
                   <div
                     className="w-full px-4 mt-5 border rounded-md shadow-md pt-9 "
                     key={index}
@@ -85,7 +86,7 @@ const OurHope = () => {
                         <h3 className="mb-4 text-lg font-semibold text-primary ">
                           {name}
                         </h3>
-                        <p className="h-40 text-base text-secondary">{text}</p>
+                        <p className="text-base h-28 text-secondary">{text}</p>
                       </div>
                     </div>
                   </div>

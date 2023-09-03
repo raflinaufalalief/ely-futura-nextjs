@@ -47,7 +47,7 @@ function Product({ initialProducts }) {
 
   return (
     <section>
-      <div className="px-4 mx-auto containers">
+      <div className="mx-auto containers">
         <div className="">
           <div className="px-4 mb-5 title">Property Terbaru</div>
           <div className="ListinganTerbaru">

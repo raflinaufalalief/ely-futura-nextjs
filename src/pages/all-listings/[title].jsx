@@ -2,8 +2,6 @@ import ProfileCard from "@/components/ProfileCard"
 import SpekLengkap from "@/components/SpekLengkap"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
-import { SlideshowLightbox } from "lightbox.js-react"
-import "lightbox.js-react/dist/index.css"
 import Carousel from "react-multi-carousel"
 import "react-multi-carousel/lib/styles.css"
 import ProductSerupa from "@/components/ProductSerupa"
@@ -11,6 +9,9 @@ import ProductSekitar from "@/components/ProductSekitar"
 import Link from "next/link"
 import { AiFillHome } from "react-icons/ai"
 import { MdOutlineKeyboardArrowRight } from "react-icons/md"
+import API_URL from "../api/products"
+import { PhotoProvider, PhotoView } from "react-photo-view"
+import "react-photo-view/dist/react-photo-view.css"
 
 const responsive = {
   desktop: {
@@ -39,7 +40,7 @@ function ProductDetail({ initialProduct }) {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`${process.env.NEXT_URL}/api/produk-rafli`)
+        const response = await fetch(API_URL)
         const apiData = await response.json()
 
         const productWithTitle = apiData.products.find(
@@ -57,22 +58,21 @@ function ProductDetail({ initialProduct }) {
       }
     }
 
-    if (!product.id) {
-      fetchData()
-    }
-  }, [product.id, router.query.title, queryType, queryKota])
+    fetchData()
+  }, [router.query.title, queryType, queryKota])
 
-  if (!product.id) {
+  if (!product) {
     return <div>Loading...</div>
   }
+
   //
-  const lightboxImages = product.detail_image.map((type) => type.detail_images)
+  const items = product.detail_image.map((type) => type.detail_images)
 
   return (
     <section className="mobile:py-16 tablet:py-16">
       <div className="mx-auto containers">
         {/* <!-- Breadcrumb --> */}
-        <div className="Sdesktop:px-4">
+        <div className="px-1 Sdesktop:px-4 ">
           <nav className="flex mt-4 mb-4 text-primary">
             <ol className="inline-flex items-center space-x-1 md:space-x-3">
               <li className="flex items-center">
@@ -109,48 +109,50 @@ function ProductDetail({ initialProduct }) {
 
         <div className="flex flex-col Sdesktop:flex-row ">
           <div className="Sdesktop:w-[65%] Sdesktop:px-4 w-full ">
-            <Carousel
-              additionalTransfrom={0}
-              arrows
-              autoPlay
-              autoPlaySpeed={2000}
-              centerMode={false}
-              className=""
-              containerClass="container-with-dots"
-              dotListClass=""
-              draggable
-              focusOnSelect={false}
-              infinite={true}
-              itemClass=""
-              keyBoardControl
-              minimumTouchDrag={80}
-              pauseOnHover
-              renderArrowsWhenDisabled={false}
-              renderButtonGroupOutside={false}
-              renderDotsOutside={false}
-              responsive={responsive}
-              rewind={false}
-              rewindWithAnimation={false}
-              rtl={false}
-              shouldResetAutoplay
-              showDots={true}
-              sliderClass=""
-              slidesToSlide={1}
-              swipeable
-            >
-              {lightboxImages.map((imageUrl, index) => (
-                <div
-                  key={index}
-                  className="w-full pb-[75%] tablet:pb-[55%] rounded  relative  overflow-hidden"
-                >
-                  <img
-                    className="absolute inset-0 object-cover w-full h-full"
-                    src={imageUrl}
-                    alt={`Image ${index}`}
-                  />
-                </div>
-              ))}
-            </Carousel>
+            <div>
+              <Carousel
+                additionalTransfrom={0}
+                arrows
+                autoPlay
+                autoPlaySpeed={2000}
+                centerMode={false}
+                className=""
+                containerClass="container-with-dots"
+                dotListClass=""
+                draggable
+                focusOnSelect={false}
+                infinite={true}
+                itemClass=""
+                keyBoardControl
+                minimumTouchDrag={80}
+                pauseOnHover
+                renderArrowsWhenDisabled={false}
+                renderButtonGroupOutside={false}
+                renderDotsOutside={false}
+                responsive={responsive}
+                rewind={false}
+                rewindWithAnimation={false}
+                rtl={false}
+                shouldResetAutoplay
+                showDots={true}
+                sliderClass=""
+                slidesToSlide={1}
+                swipeable
+              >
+                {items.map((imageUrl, index) => (
+                  <div
+                    key={index}
+                    className="w-full pb-[75%] tablet:pb-[55%] rounded relative overflow-hidden"
+                  >
+                    <img
+                      className="absolute inset-0 object-cover w-full h-full"
+                      src={imageUrl}
+                      alt={`Image ${index}`}
+                    />
+                  </div>
+                ))}
+              </Carousel>
+            </div>
           </div>
 
           <div className=" mobile:flex-col-reverse mobile:flex tablet:flex-col-reverse tablet:flex">
@@ -189,39 +191,47 @@ function ProductDetail({ initialProduct }) {
             </div>
             {/* mobile */}
             <div className="block Sdesktop:hidden ">
-              <div className="flex justify-between px-4 pt-4 ">
-                <div className="pt-3 Sdesktop:px-0 Sdesktop:pt-0">
-                  <SlideshowLightbox className="flex h-20 overflow-auto tablet:h-28 gap-x-3">
-                    {lightboxImages.map((imageUrl, index) => (
-                      <img
-                        key={index}
-                        className="w-full rounded aspect-1"
-                        src={imageUrl}
-                        alt={`Image ${index}`}
-                      />
-                    ))}
-                  </SlideshowLightbox>
+              <PhotoProvider>
+                <div className="flex justify-between px-4 pt-4 ">
+                  <div className="pt-3 Sdesktop:px-0 Sdesktop:pt-0">
+                    <div className="flex h-20 overflow-auto tablet:h-28 gap-x-3">
+                      {product.detail_image.map((imageUrl, index) => (
+                        <PhotoView src={imageUrl.detail_images}>
+                          <img
+                            key={index}
+                            className="w-full rounded aspect-1"
+                            src={imageUrl.detail_images}
+                            alt={`Image ${index}`}
+                          />
+                        </PhotoView>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </PhotoProvider>
             </div>
           </div>
         </div>
         {/* desktop */}
-        <div className="hidden Sdesktop:block ">
-          <div className="flex items-center justify-between px-4 pt-5 ">
-            <div className="w-[64%] ">
-              <SlideshowLightbox className="flex overflow-hidden aspect-7 gap-x-3">
-                {lightboxImages.map((imageUrl, index) => (
-                  <img
-                    key={index}
-                    className="w-full rounded aspect-1"
-                    src={imageUrl}
-                    alt={`Image ${index}`}
-                  />
-                ))}
-              </SlideshowLightbox>
+        <div className="block mobile:hidden ">
+          <PhotoProvider>
+            <div className="flex items-center justify-between px-4 pt-5 cursor-pointer ">
+              <div className="w-[64%] ">
+                <div className="flex overflow-hidden aspect-7 gap-x-3">
+                  {product.detail_image.map((imageUrl, index) => (
+                    <PhotoView src={imageUrl.detail_images}>
+                      <img
+                        key={index}
+                        className="w-full rounded aspect-1"
+                        src={imageUrl.detail_images}
+                        alt={`Image ${index}`}
+                      />
+                    </PhotoView>
+                  ))}
+                </div>
+              </div>
             </div>
-          </div>
+          </PhotoProvider>
         </div>
         <hr className="my-5 mobile:hidden bg-primary/10 h-[2px]" />
         <div className="px-4 ">
@@ -238,32 +248,6 @@ function ProductDetail({ initialProduct }) {
       <ProductSekitar />
     </section>
   )
-}
-
-export async function getServerSideProps(context) {
-  const { params } = context
-
-  try {
-    const response = await fetch(`${process.env.NEXT_URL}/api/produk-rafli`)
-    const apiData = await response.json()
-
-    const initialProduct = apiData.products.find(
-      (product) => product.title.toLowerCase() === params.title.toLowerCase()
-    )
-
-    return {
-      props: {
-        initialProduct,
-      },
-    }
-  } catch (error) {
-    console.error("Error fetching data:", error)
-    return {
-      props: {
-        initialProduct: {},
-      },
-    }
-  }
 }
 
 export default ProductDetail

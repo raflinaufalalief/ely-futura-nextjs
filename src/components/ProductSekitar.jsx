@@ -64,7 +64,7 @@ export default function ProductSekitar() {
             <Carousel
               additionalTransfrom={0}
               arrows
-              ssr={true}
+              ssr={false}
               autoPlaySpeed={3000}
               centerMode={false}
               className=""
