@@ -6,7 +6,6 @@ import { BiBath, BiBed } from "react-icons/bi"
 import ReactPaginate from "react-paginate"
 import { IoAlertCircleOutline } from "react-icons/io5"
 import { RiArrowLeftDoubleFill, RiArrowRightDoubleFill } from "react-icons/ri"
-import API_URL from "../api/products"
 
 function Alllistings({ initialProducts }) {
   const [currentPage, setCurrentPage] = useState(0)
@@ -206,7 +205,7 @@ function Alllistings({ initialProducts }) {
 
 export async function getStaticProps() {
   try {
-    const response = await fetch(API_URL)
+    const response = await fetch(process.env.NEXT_PUBLIC_API_URL)
     const apiData = await response.json()
 
     return {
