@@ -44,16 +44,17 @@ const OurHope = () => {
           <Carousel
             additionalTransfrom={0}
             arrows
+            autoPlay
             autoPlaySpeed={3000}
             centerMode={false}
-            ssr={true}
+            ssr={false}
+            infinite={true}
             className=""
             containerClass="multi-container"
             removeArrowOnDeviceType={["tablet", "mobile"]}
             dotListClass=""
             draggable
             focusOnSelect={false}
-            infinite={false}
             itemClass=""
             keyBoardControl
             minimumTouchDrag={80}
@@ -73,13 +74,10 @@ const OurHope = () => {
             {hope.map((result, index) => {
               const { name, image, text } = result
               return (
-                <div className="px-2">
-                  <div
-                    className="w-full px-4 mt-5 border rounded-md shadow-md pt-9 "
-                    key={index}
-                  >
-                    <div className="mx-auto  mb-10 max-w-[500px] mobile:max-w-[300px]  ">
-                      <div className="mb-8 overflow-hidden rounded-md">
+                <div key={index} className="px-2">
+                  <div className="w-full px-4 mt-5 border rounded shadow-md pt-9 ">
+                    <div className="mx-auto  mb-10 max-w-[500px] mobile:max-w-[300px]   ">
+                      <div className="mb-8 overflow-hidden rounded ">
                         <Image src={image} alt="..." />
                       </div>
                       <div>

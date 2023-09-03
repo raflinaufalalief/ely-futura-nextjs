@@ -45,7 +45,6 @@ function ProductDetail({ initialProduct }) {
 
         const productWithTitle = apiData.products.find(
           (product) =>
-            product.title.toLowerCase() === router.query.title.toLowerCase() &&
             product.type.some((type) => type.name === queryType) &&
             product.kota.some((kota) => kota.name === queryKota)
         )
@@ -72,9 +71,9 @@ function ProductDetail({ initialProduct }) {
     <section className="mobile:py-16 tablet:py-16">
       <div className="mx-auto containers">
         {/* <!-- Breadcrumb --> */}
-        <div className="px-1 Sdesktop:px-4 ">
+        <div className="px-1 Sdesktop:px-4">
           <nav className="flex mt-4 mb-4 text-primary">
-            <ol className="inline-flex items-center space-x-1 md:space-x-3">
+            <ol className="inline-flex items-center">
               <li className="flex items-center">
                 <Link
                   href="/"
@@ -89,7 +88,7 @@ function ProductDetail({ initialProduct }) {
                   <MdOutlineKeyboardArrowRight />
                   <Link
                     href={"/all-listings"}
-                    className="ml-1 text-sm font-medium text-primary hover:text-accent md:ml-2 dark:text-gray-400 dark:hover:text-white"
+                    className="ml-1 text-sm font-medium text-primary hover:text-accent dark:text-gray-400 dark:hover:text-white"
                   >
                     All-listings
                   </Link>
@@ -114,11 +113,12 @@ function ProductDetail({ initialProduct }) {
                 additionalTransfrom={0}
                 arrows
                 autoPlay
-                autoPlaySpeed={2000}
+                autoPlaySpeed={3000}
                 centerMode={false}
                 className=""
                 containerClass="container-with-dots"
                 dotListClass=""
+                removeArrowOnDeviceType={["tablet", "mobile"]}
                 draggable
                 focusOnSelect={false}
                 infinite={true}
@@ -192,11 +192,11 @@ function ProductDetail({ initialProduct }) {
             {/* mobile */}
             <div className="block Sdesktop:hidden ">
               <PhotoProvider>
-                <div className="flex justify-between px-4 pt-4 ">
-                  <div className="pt-3 Sdesktop:px-0 Sdesktop:pt-0">
+                <div className="flex justify-between px-4 ">
+                  <div className="pt-3 ">
                     <div className="flex h-20 overflow-auto tablet:h-28 gap-x-3">
                       {product.detail_image.map((imageUrl, index) => (
-                        <PhotoView src={imageUrl.detail_images}>
+                        <PhotoView key={index} src={imageUrl.detail_images}>
                           <img
                             key={index}
                             className="w-full rounded aspect-1"
@@ -215,11 +215,11 @@ function ProductDetail({ initialProduct }) {
         {/* desktop */}
         <div className="block mobile:hidden ">
           <PhotoProvider>
-            <div className="flex items-center justify-between px-4 pt-5 cursor-pointer ">
-              <div className="w-[64%] ">
+            <div className="flex items-center justify-between px-4 cursor-pointer ">
+              <div className="w-[64%] pt-3  ">
                 <div className="flex overflow-hidden aspect-7 gap-x-3">
                   {product.detail_image.map((imageUrl, index) => (
-                    <PhotoView src={imageUrl.detail_images}>
+                    <PhotoView key={index} src={imageUrl.detail_images}>
                       <img
                         key={index}
                         className="w-full rounded aspect-1"
