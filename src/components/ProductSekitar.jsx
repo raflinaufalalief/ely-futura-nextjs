@@ -4,7 +4,7 @@ import { BiBath, BiBed } from "react-icons/bi"
 import Carousel from "react-multi-carousel"
 import "react-multi-carousel/lib/styles.css"
 // In getServerSideProps
-import API_URL from "../pages/api/products"
+
 import { useRouter } from "next/router"
 
 export default function ProductSekitar() {
@@ -15,7 +15,7 @@ export default function ProductSekitar() {
   useEffect(() => {
     async function fetchFilteredProducts(kota) {
       try {
-        const response = await fetch(API_URL)
+        const response = await fetch(process.env.NEXT_PUBLIC_API_URL)
         const data = await response.json()
         const filteredData = data.products.filter((product) =>
           product.kota.some((productKota) => productKota.name === kota)
@@ -52,6 +52,9 @@ export default function ProductSekitar() {
       slidesToSlide: 1,
     },
   }
+
+  // Acak urutan produk sebelum menampilkannya
+  const shuffledProducts = [...products].sort(() => Math.random() - 0.5)
 
   return (
     <section className="py-0">
@@ -90,7 +93,7 @@ export default function ProductSekitar() {
               sliderClass=""
               swipeable
             >
-              {products.map((product) => (
+              {shuffledProducts.map((product) => (
                 <div key={product.id}>
                   <div className="relative w-full px-4 mx-auto ">
                     <div className="p-4 bg-white border rounded shadow-lg">

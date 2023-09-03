@@ -3,8 +3,6 @@ import { useEffect, useState } from "react"
 import { BiBath, BiBed } from "react-icons/bi"
 import Carousel from "react-multi-carousel"
 import "react-multi-carousel/lib/styles.css"
-// In getServerSideProps
-import API_URL from "../pages/api/products"
 
 const responsive = {
   desktop: {
@@ -30,7 +28,7 @@ function Product({ initialProducts }) {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(API_URL)
+        const response = await fetch(process.env.NEXT_PUBLIC_API_URL)
         const apiData = await response.json()
         setProducts(apiData.products)
       } catch (error) {

@@ -9,7 +9,6 @@ import ProductSekitar from "@/components/ProductSekitar"
 import Link from "next/link"
 import { AiFillHome } from "react-icons/ai"
 import { MdOutlineKeyboardArrowRight } from "react-icons/md"
-import API_URL from "../api/products"
 import { PhotoProvider, PhotoView } from "react-photo-view"
 import "react-photo-view/dist/react-photo-view.css"
 
@@ -40,7 +39,7 @@ function ProductDetail({ initialProduct }) {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(API_URL)
+        const response = await fetch(process.env.NEXT_PUBLIC_API_URL)
         const apiData = await response.json()
 
         const productWithTitle = apiData.products.find(

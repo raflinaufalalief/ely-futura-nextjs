@@ -3,7 +3,6 @@ import Carousel from "react-multi-carousel"
 import "react-multi-carousel/lib/styles.css"
 import Link from "next/link"
 import { BiBath, BiBed } from "react-icons/bi"
-import API_URL from "../pages/api/products"
 import { useRouter } from "next/router"
 
 function ProductSerupa() {
@@ -13,7 +12,7 @@ function ProductSerupa() {
 
   async function fetchFilteredProducts(type) {
     try {
-      const response = await fetch(API_URL)
+      const response = await fetch(process.env.NEXT_PUBLIC_API_URL)
       const data = await response.json()
       const filteredData = data.products.filter((product) =>
         product.type.some((productType) => productType.name === type)
@@ -52,6 +51,9 @@ function ProductSerupa() {
     },
   }
 
+  // Acak urutan produk sebelum menampilkannya
+  const shuffledProducts = [...filteredProducts].sort(() => Math.random() - 0.5)
+
   return (
     <section>
       <div className="mx-auto containers">
@@ -89,7 +91,7 @@ function ProductSerupa() {
               sliderClass=""
               swipeable
             >
-              {filteredProducts.map((product) => (
+              {shuffledProducts.map((product) => (
                 <div key={product.id}>
                   <div className="relative w-full px-4 mx-auto ">
                     <div className="p-4 bg-white border rounded shadow-lg">
