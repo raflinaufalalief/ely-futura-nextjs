@@ -4,11 +4,28 @@ import { BiLogoGmail } from "react-icons/bi"
 import { IoLogoWhatsapp } from "react-icons/io"
 import contact from "../../../public/assets/homecta.jpg"
 import Image from "next/image"
+import { defaultSEO } from "@/components/Seo"
+import Head from "next/head"
 
 const ContactPage = () => {
+  const seo = {
+    ...defaultSEO,
+    title: "Contact | Punyaasset", // Judul khusus untuk halaman About
+  }
   const pesan = `https://wa.me/+6287789070758?text=Saya ingin bertanya atau konsultasi seputar property `
   return (
     <section className="pt-0">
+      <Head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+        <meta name="author" content={seo.author} />
+        <meta name="keywords" content={seo.keywords} />
+        <meta property="og:title" content={seo.title} />
+        <meta property="og:description" content={seo.description} />
+        <meta property="og:url" content={seo.url} />
+      </Head>
       {/* // <!-- Container --> */}
       <div className="relative flex flex-col items-center mx-auto Sdesktop:flex-row-reverse containers">
         {/* <!-- Image Column --> */}

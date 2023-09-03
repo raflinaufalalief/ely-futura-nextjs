@@ -1,6 +1,12 @@
+import { defaultSEO } from "@/components/Seo"
+import Head from "next/head"
 import { useState } from "react"
 
 const PropertyForm = () => {
+  const seo = {
+    ...defaultSEO,
+    title: "TitipJualSewa | Punyaasset", // Judul khusus untuk halaman About
+  }
   const [judulIklan, setJudulIklan] = useState("")
   const [harga, setHarga] = useState("")
   const [jenisTransaksi, setJenisTransaksi] = useState("Jual")
@@ -53,6 +59,17 @@ const PropertyForm = () => {
 
   return (
     <section className="bg-[#ECECEC] ">
+      <Head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+        <meta name="author" content={seo.author} />
+        <meta name="keywords" content={seo.keywords} />
+        <meta property="og:title" content={seo.title} />
+        <meta property="og:description" content={seo.description} />
+        <meta property="og:url" content={seo.url} />
+      </Head>
       <div className="px-4 pt-10 mx-auto containers">
         <div className="flex flex-col items-center justify-center">
           <h1 className="mb-3 text-3xl font-semibold text-center title ">

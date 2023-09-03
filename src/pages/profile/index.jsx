@@ -3,10 +3,27 @@ import profile from "../../../public/assets/profile.png"
 import { GrMapLocation } from "react-icons/gr"
 import { IoBusinessOutline } from "react-icons/io5"
 import Image from "next/image"
+import { defaultSEO } from "@/components/Seo"
+import Head from "next/head"
 
 const Profile = () => {
+  const seo = {
+    ...defaultSEO,
+    title: "Profile | Punyaasset", // Judul khusus untuk halaman About
+  }
   return (
     <section className="pt-0">
+      <Head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+        <meta name="author" content={seo.author} />
+        <meta name="keywords" content={seo.keywords} />
+        <meta property="og:title" content={seo.title} />
+        <meta property="og:description" content={seo.description} />
+        <meta property="og:url" content={seo.url} />
+      </Head>
       {/* <!-- component --> */}
       <div className="relative block h-[500px] w-full">
         <div className="absolute top-0 w-full h-full bg-center bg-no-repeat bg-cover bg-profile-bg">
