@@ -92,15 +92,15 @@ function ProductDetail({ initialProduct }) {
       </Head>
       <div className="mx-auto containers">
         {/* <!-- Breadcrumb --> */}
-        <div className="px-1 Sdesktop:px-4">
+        <div className="pl-1 Sdesktop:px-4">
           <nav className="flex mt-4 mb-4 text-primary">
             <ol className="inline-flex items-center">
               <li className="flex items-center">
                 <Link
                   href="/"
-                  className="inline-flex items-center text-sm font-medium text-primary hover:text-accent "
+                  className="inline-flex items-center Sdesktop:text-sm text-xs  font-medium text-primary hover:text-accent "
                 >
-                  <AiFillHome className="mr-1 text-sm" />
+                  <AiFillHome className="mr-1 Sdesktop:text-sm text-xs" />
                   Home
                 </Link>
               </li>
@@ -109,7 +109,7 @@ function ProductDetail({ initialProduct }) {
                   <MdOutlineKeyboardArrowRight />
                   <Link
                     href={"/all-listings"}
-                    className="ml-1 text-sm font-medium text-primary hover:text-accent dark:text-gray-400 dark:hover:text-white"
+                    className="ml-1 Sdesktop:text-sm text-xs font-medium text-primary hover:text-accent  "
                   >
                     All-listings
                   </Link>
@@ -118,7 +118,7 @@ function ProductDetail({ initialProduct }) {
               <li>
                 <div className="flex items-center">
                   <MdOutlineKeyboardArrowRight />
-                  <span className="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">
+                  <span className="ml-1 Sdesktop:text-sm text-xs font-medium text-gray-500  ">
                     {product.title}
                   </span>
                 </div>
