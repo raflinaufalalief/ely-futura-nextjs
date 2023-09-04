@@ -6,7 +6,7 @@ import Head from "next/head"
 const AboutPage = () => {
   const seo = {
     ...defaultSEO,
-    title: "About | Punyaasset", // Judul khusus untuk halaman About
+    title: "About | Koleksiproperti", // Judul khusus untuk halaman About
   }
   return (
     <>

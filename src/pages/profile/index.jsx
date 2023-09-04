@@ -9,7 +9,7 @@ import Head from "next/head"
 const Profile = () => {
   const seo = {
     ...defaultSEO,
-    title: "Profile | Punyaasset", // Judul khusus untuk halaman About
+    title: "Profile | Koleksiproperti", // Judul khusus untuk halaman About
   }
   return (
     <section className="pt-0">

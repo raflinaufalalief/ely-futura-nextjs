@@ -10,7 +10,7 @@ import Head from "next/head"
 const ContactPage = () => {
   const seo = {
     ...defaultSEO,
-    title: "Contact | Punyaasset", // Judul khusus untuk halaman About
+    title: "Contact | Koleksiproperti", // Judul khusus untuk halaman About
   }
   const pesan = `https://wa.me/+6287789070758?text=Saya ingin bertanya atau konsultasi seputar property `
   return (

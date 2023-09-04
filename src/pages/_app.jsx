@@ -7,7 +7,7 @@ import { defaultSEO } from "@/components/Seo"
 export default function App({ Component, pageProps }) {
   const seo = {
     ...defaultSEO,
-    title: "Punyaasset", // Judul khusus untuk halaman beranda
+    title: "Koleksiproperti", // Judul khusus untuk halaman beranda
   }
   return (
     <>

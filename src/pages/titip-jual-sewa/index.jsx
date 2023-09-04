@@ -5,7 +5,7 @@ import { useState } from "react"
 const PropertyForm = () => {
   const seo = {
     ...defaultSEO,
-    title: "TitipJualSewa | Punyaasset", // Judul khusus untuk halaman About
+    title: "TitipJualSewa | Koleksiproperti", // Judul khusus untuk halaman About
   }
   const [judulIklan, setJudulIklan] = useState("")
   const [harga, setHarga] = useState("")

@@ -10,7 +10,7 @@ import Head from "next/head"
 function Home() {
   const seo = {
     ...defaultSEO,
-    title: "Home | Punyaasset", // Judul khusus untuk halaman beranda
+    title: "Home | Koleksiproperti", // Judul khusus untuk halaman beranda
   }
   return (
     <>
