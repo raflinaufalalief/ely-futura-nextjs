@@ -1,11 +1,3 @@
-import ProfileCard from "@/components/ProfileCard"
-import SpekLengkap from "@/components/SpekLengkap"
-import { useRouter } from "next/router"
-import { useEffect, useState } from "react"
-import Carousel from "react-multi-carousel"
-import "react-multi-carousel/lib/styles.css"
-import ProductSerupa from "@/components/ProductSerupa"
-import ProductSekitar from "@/components/ProductSekitar"
 import Link from "next/link"
 import { AiFillHome } from "react-icons/ai"
 import { MdOutlineKeyboardArrowRight } from "react-icons/md"
@@ -13,69 +5,36 @@ import { PhotoProvider, PhotoView } from "react-photo-view"
 import "react-photo-view/dist/react-photo-view.css"
 import { defaultSEO } from "@/components/Seo"
 import Head from "next/head"
+import ProfileCard from "@/components/ProfileCard"
+import SpekLengkap from "@/components/SpekLengkap"
+// import { useRouter } from "next/router"
+import Carousel from "react-multi-carousel"
+import "react-multi-carousel/lib/styles.css"
 
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
     items: 1,
-    slidesToSlide: 1, // optional, default to 1.
+    slidesToSlide: 1,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
     items: 1,
-    slidesToSlide: 2, // optional, default to 1.
+    slidesToSlide: 2,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
     items: 1,
-    slidesToSlide: 1, // optional, default to 1.
+    slidesToSlide: 1,
   },
 }
 
-function ProductDetail({ initialProduct }) {
-  const router = useRouter()
-  const [product, setProduct] = useState(initialProduct)
-  const queryType = router.query.type
-  const queryKota = router.query.kota
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch(process.env.NEXT_PUBLIC_API_URL)
-        const apiData = await response.json()
-
-        const productWithTitle = apiData.products.find(
-          (product) =>
-            product.type.some((type) => type.name === queryType) &&
-            product.kota.some((kota) => kota.name === queryKota)
-        )
-
-        if (productWithTitle) {
-          setProduct(productWithTitle)
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error)
-      }
-    }
-
-    fetchData()
-  }, [router.query.title, queryType, queryKota])
-
-  let seo = defaultSEO // Inisialisasi dengan SEO default
-
-  if (product) {
-    seo = {
-      ...defaultSEO,
-      title: `${product.title} | Punyaasset`,
-    }
-  }
+function ProductDetail({ product, seo }) {
+  // const router = useRouter()
 
   if (!product) {
     return <div>Loading...</div>
   }
-
-  //
-  const items = product.detail_image.map((type) => type.detail_images)
 
   return (
     <section className="mobile:py-16 tablet:py-16">
@@ -91,16 +50,15 @@ function ProductDetail({ initialProduct }) {
         <meta property="og:url" content={seo.url} />
       </Head>
       <div className="mx-auto containers">
-        {/* <!-- Breadcrumb --> */}
         <div className="pl-1 Sdesktop:px-4">
           <nav className="flex mt-4 mb-4 text-primary">
             <ol className="inline-flex items-center">
               <li className="flex items-center">
                 <Link
                   href="/"
-                  className="inline-flex items-center Sdesktop:text-sm text-xs  font-medium text-primary hover:text-accent "
+                  className="inline-flex items-center text-xs font-medium Sdesktop:text-sm text-primary hover:text-accent "
                 >
-                  <AiFillHome className="mr-1 Sdesktop:text-sm text-xs" />
+                  <AiFillHome className="mr-1 text-xs Sdesktop:text-sm" />
                   Home
                 </Link>
               </li>
@@ -109,7 +67,7 @@ function ProductDetail({ initialProduct }) {
                   <MdOutlineKeyboardArrowRight />
                   <Link
                     href={"/all-listings"}
-                    className="ml-1 Sdesktop:text-sm text-xs font-medium text-primary hover:text-accent  "
+                    className="ml-1 text-xs font-medium Sdesktop:text-sm text-primary hover:text-accent "
                   >
                     All-listings
                   </Link>
@@ -118,7 +76,7 @@ function ProductDetail({ initialProduct }) {
               <li>
                 <div className="flex items-center">
                   <MdOutlineKeyboardArrowRight />
-                  <span className="ml-1 Sdesktop:text-sm text-xs font-medium text-gray-500  ">
+                  <span className="ml-1 text-xs font-medium text-gray-500 Sdesktop:text-sm ">
                     {product.title}
                   </span>
                 </div>
@@ -144,6 +102,7 @@ function ProductDetail({ initialProduct }) {
                 focusOnSelect={false}
                 infinite={true}
                 itemClass=""
+                ssr
                 keyBoardControl
                 minimumTouchDrag={80}
                 pauseOnHover
@@ -160,14 +119,14 @@ function ProductDetail({ initialProduct }) {
                 slidesToSlide={1}
                 swipeable
               >
-                {items.map((imageUrl, index) => (
+                {product.detail_image.map((imageUrl, index) => (
                   <div
                     key={index}
                     className="w-full pb-[75%] tablet:pb-[55%] rounded relative overflow-hidden"
                   >
                     <img
                       className="absolute inset-0 object-cover w-full h-full"
-                      src={imageUrl}
+                      src={imageUrl.detail_images}
                       alt={`Image ${index}`}
                     />
                   </div>
@@ -205,17 +164,15 @@ function ProductDetail({ initialProduct }) {
                 <h2
                   className="mb-5 text-sm font-medium text-black/50 "
                   dangerouslySetInnerHTML={{ __html: product.deskripsi }}
-                >
-                  {/* {product.deskripsi.replace(/<[^>]+>|&nbsp;/g, " ")} */}
-                </h2>
+                ></h2>
               </div>
             </div>
             {/* mobile */}
-            <div className="block Sdesktop:hidden ">
+            <div className="block Sdesktop:hidden">
               <PhotoProvider>
-                <div className="flex justify-between px-4 ">
+                <div className="flex justify-between">
                   <div className="pt-3 ">
-                    <div className="flex h-20 overflow-auto tablet:h-28 gap-x-3">
+                    <div className="flex overflow-auto aspect-4 gap-x-3">
                       {product.detail_image.map((imageUrl, index) => (
                         <PhotoView key={index} src={imageUrl.detail_images}>
                           <img
@@ -234,7 +191,7 @@ function ProductDetail({ initialProduct }) {
           </div>
         </div>
         {/* desktop */}
-        <div className="block mobile:hidden ">
+        <div className="hidden Sdesktop:block">
           <PhotoProvider>
             <div className="flex items-center justify-between px-4 cursor-pointer ">
               <div className="w-[64%] pt-3  ">
@@ -258,17 +215,67 @@ function ProductDetail({ initialProduct }) {
         <div className="px-4 ">
           <div className=" Sdesktop:justify-between Sdesktop:flex tablet:justify-between tablet:flex">
             <SpekLengkap props={product} />
-
             <div className="sticky flex items-center justify-end mt-5 Sdesktop:mt-0">
               <ProfileCard pesanwa={product.title} />
             </div>
           </div>
         </div>
       </div>
-      <ProductSerupa />
-      <ProductSekitar />
     </section>
   )
+}
+
+export async function getStaticPaths() {
+  // Fetch your data and generate all possible paths
+  const response = await fetch(process.env.NEXT_PUBLIC_API_URL)
+  const apiData = await response.json()
+  const paths = apiData.products.map((product) => ({
+    params: { slug: product.slug },
+  }))
+
+  return {
+    paths,
+    fallback: false, // Set to true if you want to handle missing paths
+  }
+}
+
+export async function getStaticProps({ params }) {
+  try {
+    const slug = params.slug
+
+    // Fetch your data using a client-side fetch or any other method
+    const response = await fetch(process.env.NEXT_PUBLIC_API_URL)
+    const apiData = await response.json()
+
+    const productWithSlug = apiData.products.find(
+      (product) => product.slug === slug
+    )
+
+    let seo = defaultSEO
+
+    if (productWithSlug) {
+      seo = {
+        ...defaultSEO,
+        title: `${productWithSlug.title} | Koleksiproperty`,
+      }
+    }
+
+    return {
+      props: {
+        product: productWithSlug || null,
+        seo,
+      },
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error)
+
+    return {
+      props: {
+        product: null,
+        seo: defaultSEO,
+      },
+    }
+  }
 }
 
 export default ProductDetail

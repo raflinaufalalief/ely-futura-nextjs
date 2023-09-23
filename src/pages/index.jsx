@@ -4,7 +4,7 @@ import Filter from "@/components/Filter"
 import Hero from "@/components/Hero"
 import OurHope from "@/components/OurHope"
 import Product from "@/components/Product"
-import WhyChoose from "@/components/choose/WhyChoose"
+import WhyChoose from "@/components/WhyChoose"
 import { defaultSEO } from "@/components/Seo"
 import Head from "next/head"
 function Home() {

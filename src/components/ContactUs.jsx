@@ -1,5 +1,4 @@
 import React from "react"
-import contact from "../../public/assets/contact.jpg"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -9,8 +8,10 @@ const ContactUs = () => {
       <div className="relative mx-auto bg-white bg-center bg-cover containers bg-opacity-20 ">
         <Image
           className="absolute object-cover w-full h-full bg-gray-700 bg-center rounded-lg bg-blend-multiply "
-          src={contact}
-          alt="title"
+          src="/assets/contact.jpg"
+          width={500}
+          height={0}
+          alt="contactus"
         />
         <div className="rounded-lg text-primary Sdesktop:w-1/2">
           <div className="bg-[#BAE5FE] bg-opacity-95 p-5 opacity-90 backdrop-blur-lg rounded-lg Sdesktop:p-12 ">

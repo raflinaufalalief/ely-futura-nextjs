@@ -1,5 +1,31 @@
 import CountUp from "react-countup"
-import { stats } from "../../data/data"
+
+export const stats = [
+  {
+    startNumber: "1",
+    endNumber: "10",
+    unit: "",
+    title: "Property Listed",
+  },
+  {
+    startNumber: "1",
+    endNumber: "5",
+    unit: "K",
+    title: "Property Sold",
+  },
+  {
+    startNumber: "1",
+    endNumber: "15",
+    unit: "",
+    title: "Property Partner",
+  },
+  {
+    startNumber: "1",
+    endNumber: "24",
+    unit: "",
+    title: "Professional Agent",
+  },
+]
 
 const Statistic = () => {
   return (

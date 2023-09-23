@@ -2,7 +2,7 @@ import React from "react"
 
 const Hero = () => {
   return (
-    <div id="home">
+    <div>
       <div className="relative block h-[500px] w-full">
         <div className="absolute top-0 w-full h-full bg-center bg-no-repeat bg-cover bg-hero-bg ">
           <span className="absolute w-full h-full bg-black opacity-50"></span>

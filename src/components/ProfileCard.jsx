@@ -1,7 +1,5 @@
 import React from "react"
-import logo from "../../public/assets/logo-futura.png"
 import { BsTelephone, BsWhatsapp } from "react-icons/bs"
-import profile from "../../public/assets/profile.png"
 import Image from "next/image"
 
 const ProfileCard = ({ pesanwa }) => {
@@ -11,14 +9,26 @@ const ProfileCard = ({ pesanwa }) => {
       <div className=" gap-x-4 border rounded-md w-[300px]  mobile:w-full desktop:sticky desktop:top-28 bg-white shadow-lg px-5 py-5 h-fit">
         <div className="flex items-center justify-center gap-x-3">
           <div>
-            <Image src={profile} className="w-24 rounded-md" alt="" />
+            <Image
+              src="/assets/profile.png"
+              width={1000}
+              height={1000}
+              className="w-24 rounded-md"
+              alt="profile"
+            />
           </div>
           <div className="">
             <h1 className="mt-5 text-xl font-semibold text-black/80 ">Ely</h1>
             <h3 className="text-xs">Property Consultant at Futura Property</h3>
           </div>
           <div className="">
-            <Image src={logo} className="w-28" alt="" />
+            <Image
+              src="/assets/logo-futura.png"
+              width={1000}
+              height={1000}
+              className="w-28"
+              alt="futura"
+            />
           </div>
         </div>
         <div className="mobile:sticky">

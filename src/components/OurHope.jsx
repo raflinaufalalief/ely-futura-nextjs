@@ -1,7 +1,6 @@
 import React from "react"
 import Carousel from "react-multi-carousel"
 import "react-multi-carousel/lib/styles.css"
-import { hope } from "../data/data"
 import Image from "next/image"
 
 const responsive = {
@@ -40,59 +39,93 @@ const OurHope = () => {
           </div>
         </div>
         {/* end section */}
-        <>
-          <Carousel
-            additionalTransfrom={0}
-            arrows
-            autoPlay
-            autoPlaySpeed={3000}
-            centerMode={false}
-            ssr={false}
-            infinite={true}
-            className=""
-            containerClass="multi-container"
-            removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
-            dotListClass=""
-            draggable
-            focusOnSelect={false}
-            itemClass=""
-            keyBoardControl
-            minimumTouchDrag={80}
-            pauseOnHover
-            renderArrowsWhenDisabled={false}
-            renderButtonGroupOutside={false}
-            renderDotsOutside={false}
-            responsive={responsive}
-            rewind={false}
-            rewindWithAnimation={false}
-            rtl={false}
-            shouldResetAutoplay
-            showDots={false}
-            sliderClass=""
-            swipeable
-          >
-            {hope.map((result, index) => {
-              const { name, image, text } = result
-              return (
-                <div key={index} className="px-2">
-                  <div className="w-full px-4 mt-5 border rounded shadow-md pt-9 ">
-                    <div className="mx-auto  mb-10 max-w-[500px] mobile:max-w-[300px]   ">
-                      <div className="mb-8 overflow-hidden rounded ">
-                        <Image src={image} alt="..." />
-                      </div>
-                      <div>
-                        <h3 className="mb-4 text-lg font-semibold text-primary ">
-                          {name}
-                        </h3>
-                        <p className="text-base h-28 text-secondary">{text}</p>
-                      </div>
-                    </div>
-                  </div>
+
+        <Carousel
+          additionalTransfrom={0}
+          arrows
+          autoPlaySpeed={3000}
+          centerMode={false}
+          className=""
+          containerClass="multi-container"
+          removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
+          keyBoardControl
+          minimumTouchDrag={80}
+          responsive={responsive}
+          sliderClass=""
+          swipeable
+        >
+          <div className="px-2">
+            <div className="w-full px-4 mt-5 border rounded shadow-md pt-9 ">
+              <div className="mx-auto mb-10 max-w-[500px] mobile:max-w-[300px]   ">
+                <div className="mb-8 overflow-hidden rounded ">
+                  <Image
+                    src="/assets/time.jpg"
+                    width={1000}
+                    height={1000}
+                    alt="time"
+                  />
                 </div>
-              )
-            })}
-          </Carousel>
-        </>
+                <div>
+                  <h3 className="mb-4 text-lg font-semibold text-primary ">
+                    Proses Transaksi Cepat
+                  </h3>
+                  <p className="text-base h-28 text-secondary">
+                    Kami akan memberikan solusi yang efektif dan memberikan
+                    bantuan yang dibutuhkan dengan cepat dan efisien.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="px-2">
+            <div className="w-full px-4 mt-5 border rounded shadow-md pt-9 ">
+              <div className="mx-auto mb-10 max-w-[500px] mobile:max-w-[300px]   ">
+                <div className="mb-8 overflow-hidden rounded ">
+                  <Image
+                    src="/assets/qualitas.jpg"
+                    width={1000}
+                    height={1000}
+                    alt="kualitas"
+                  />
+                </div>
+                <div>
+                  <h3 className="mb-4 text-lg font-semibold text-primary ">
+                    Properti Berkualitas Baik
+                  </h3>
+                  <p className="text-base h-28 text-secondary">
+                    Properti yang memenuhi standar tinggi dalam segala aspek,
+                    baik dari segi desain, konstruksi, kualitas bahan, maupun
+                    fasilitas yang disediakan.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="px-2">
+            <div className="w-full px-4 mt-5 border rounded shadow-md pt-9 ">
+              <div className="mx-auto mb-10 max-w-[500px] mobile:max-w-[300px]   ">
+                <div className="mb-8 overflow-hidden rounded ">
+                  <Image
+                    src="/assets/invest.jpg"
+                    width={1000}
+                    height={1000}
+                    alt="investasi"
+                  />
+                </div>
+                <div>
+                  <h3 className="mb-4 text-lg font-semibold text-primary ">
+                    Investasi Jangka Panjang
+                  </h3>
+                  <p className="text-base h-28 text-secondary">
+                    Tindakan membeli atau memiliki properti dengan tujuan
+                    mendapatkan keuntungan finansial melalui apresiasi nilai
+                    properti dan pendapatan sewa.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Carousel>
       </div>
     </section>
   )

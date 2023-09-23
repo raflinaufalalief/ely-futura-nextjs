@@ -1,5 +1,4 @@
 import React from "react"
-import profile from "../../../public/assets/profile.png"
 import { GrMapLocation } from "react-icons/gr"
 import { IoBusinessOutline } from "react-icons/io5"
 import Image from "next/image"
@@ -39,7 +38,9 @@ const Profile = () => {
                   <div className="relative">
                     <Image
                       alt="profile"
-                      src={profile}
+                      src="/assets/profile.png"
+                      width={500}
+                      height={500}
                       className="absolute h-auto -ml-20 pt-10 align-middle border-none rounded-full   max-w-[150px]"
                     />
                   </div>

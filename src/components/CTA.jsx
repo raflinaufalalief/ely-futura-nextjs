@@ -1,8 +1,5 @@
 import React from "react"
 import { BsArrowRight } from "react-icons/bs"
-import home from "../../public/assets/bedroom.jpg"
-import home2 from "../../public/assets/bathroom.jpg"
-import home3 from "../../public/assets/homecta.jpg"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -45,8 +42,10 @@ const CTA = () => {
             <div className="overflow-hidden bg-yellow-400 rounded-md shadow-lg">
               <Image
                 className="object-cover w-full h-full rounded-md"
-                src={home3}
-                alt="title"
+                src="/assets/homecta.jpg"
+                width={1000}
+                height={1000}
+                alt="home"
               />
             </div>
           </div>
@@ -54,15 +53,19 @@ const CTA = () => {
             <div className="h-40 overflow-hidden rounded-md shadow-lg bg-green-600/60">
               <Image
                 className="object-cover w-full h-full mx-auto rounded-md"
-                src={home2}
-                alt="title"
+                src="/assets/bathroom.jpg"
+                width={1000}
+                height={1000}
+                alt="bathroom"
               />
             </div>
             <div className="h-40 overflow-hidden rounded-md shadow-lg bg-pink-600/60">
               <Image
                 className="object-cover w-full h-full mx-auto rounded-md"
-                src={home}
-                alt="title"
+                src="/assets/bedroom.jpg"
+                width={1000}
+                height={1000}
+                alt="bedroom"
               />
             </div>
           </div>

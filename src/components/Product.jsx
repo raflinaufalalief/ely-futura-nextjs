@@ -22,8 +22,8 @@ const responsive = {
   },
 }
 
-function Product({ initialProducts }) {
-  const [products, setProducts] = useState(initialProducts)
+function Product() {
+  const [products, setProducts] = useState()
 
   useEffect(() => {
     async function fetchData() {
@@ -146,20 +146,9 @@ function Product({ initialProducts }) {
                         <div className="flex items-end justify-end">
                           <Link
                             href={{
-                              pathname: "/all-listings/[title]",
-                              query: {
-                                title: product.title,
-                                type: product.type[0].name,
-                                kota: product.kota[0].name,
-                              },
+                              pathname: "/all-listings/[slug]",
+                              query: { slug: product.slug },
                             }}
-                            as={`/all-listings/${encodeURIComponent(
-                              product.title
-                            )}?type=${encodeURIComponent(
-                              product.type[0].name
-                            )}?kota=${encodeURIComponent(
-                              product.kota[0].name
-                            )}`}
                           >
                             <div className="font-medium text-accent hover:underline">
                               Detail

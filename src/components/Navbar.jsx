@@ -1,24 +1,34 @@
 import React, { useState } from "react"
-import logo from "../../public/assets/logo.png"
 import { HiMenu } from "react-icons/hi"
-import { dataNavLink } from "../data/data"
 import Link from "next/link"
 import Image from "next/image"
 
+export const dataNavLink = [
+  { id: 1, name: "Home", path: "/" },
+  { id: 2, name: "About", path: "/about" },
+  {
+    id: 3,
+    name: "Product",
+    path: "/all-listings",
+  },
+  { id: 4, name: "Profile", path: "/profile" },
+  { id: 5, name: "Contact", path: "/contact" },
+  { id: 5, name: "Titip jual/sewa", path: "/titip-jual-sewa" },
+]
 const Navbar = () => {
-  const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId)
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" })
-    }
-  }
   const [menu, setMenu] = useState(false)
   return (
     <div className="fixed top-0 z-20 w-full bg-[#BAE5FE] shadow-md ">
       <div className="px-4 py-5 containers ">
         <div className="flex justify-between Sdesktop:items-center">
           <Link href="/">
-            <Image src={logo} alt="logo" className="w-[125px]" />
+            <Image
+              className="w-[125px]"
+              src="/assets/logo.png"
+              width={500}
+              height={100}
+              alt="logo"
+            />
           </Link>
           <nav className="flex items-center">
             <div

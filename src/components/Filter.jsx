@@ -14,9 +14,7 @@ const Filter = () => {
     // Fetch data from your API
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          "https://staging-api.punyaasset.com/api/produk-rafli"
-        )
+        const response = await fetch(process.env.NEXT_PUBLIC_API_URL)
         const apiData = await response.json()
         setData(apiData.products)
       } catch (error) {
@@ -71,7 +69,7 @@ const Filter = () => {
 
   return (
     <div className="pb-10 Sdesktop:pb-0">
-      <div className="px-[35px] py-6 max-w-[1170px] mx-auto flex mobile:flex-col-reverse Sdesktop:flex-col justify-between gap-4 Sdesktop:gap-x-3 relative Sdesktop:-top-14 Sdesktop:shadow bg-[#BAE5FE] Sdesktop:backdrop-blur rounded-lg ">
+      <div className="Sdesktop:px-[35px] px-4 py-6 max-w-[1170px] mx-auto flex mobile:flex-col-reverse Sdesktop:flex-col justify-between gap-4 Sdesktop:gap-x-3 relative Sdesktop:-top-14 Sdesktop:shadow bg-[#BAE5FE] Sdesktop:backdrop-blur rounded-lg ">
         <form onSubmit={handleSubmit}>
           <div className="flex justify-between mobile:flex-col gap-y-5 gap-x-5">
             <select
@@ -128,7 +126,7 @@ const Filter = () => {
             </select>
             <button
               type="submit"
-              className="Sdesktop:w-[300px] w-full py-2 text-base font-semibold text-white bg-blue-700 rounded-md "
+              className="Sdesktop:w-[300px] w-full py-2 text-sm font-semibold text-white bg-blue-700 rounded-md "
             >
               Cari
             </button>

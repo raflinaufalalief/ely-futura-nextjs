@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
 import { useRouter } from "next/router"
 import { AiOutlineSearch } from "react-icons/ai"
-import API_URL from "../pages/api/products"
 
 const Filter = () => {
   const [data, setData] = useState([])
@@ -16,7 +15,7 @@ const Filter = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(API_URL)
+        const response = await fetch(process.env.NEXT_PUBLIC_API_URL)
         const apiData = await response.json()
         setData(apiData.products)
       } catch (error) {

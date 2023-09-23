@@ -2,7 +2,6 @@ import React from "react"
 import { ImOffice } from "react-icons/im"
 import { BiLogoGmail } from "react-icons/bi"
 import { IoLogoWhatsapp } from "react-icons/io"
-import contact from "../../../public/assets/homecta.jpg"
 import Image from "next/image"
 import { defaultSEO } from "@/components/Seo"
 import Head from "next/head"
@@ -32,8 +31,10 @@ const ContactPage = () => {
         <div className="w-full h-64 Sdesktop:w-1/2 Sdesktop:h-auto">
           <Image
             className="object-cover w-full h-full"
-            src={contact}
-            alt=".."
+            src="/assets/homecta.jpg"
+            width={1000}
+            height={1000}
+            alt="home"
           />
         </div>
         {/* <!-- Close Image Column --> */}

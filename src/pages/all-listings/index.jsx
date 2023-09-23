@@ -12,7 +12,7 @@ import { defaultSEO } from "@/components/Seo"
 function Alllistings({ initialProducts }) {
   const seo = {
     ...defaultSEO,
-    title: "All-listing | Punyaasset", // Judul khusus untuk halaman About
+    title: "All-listing | Koleksiproperty", // Judul khusus untuk halaman About
   }
   const [currentPage, setCurrentPage] = useState(0)
 
@@ -145,20 +145,9 @@ function Alllistings({ initialProducts }) {
                         <div className="flex items-end justify-end">
                           <Link
                             href={{
-                              pathname: "/all-listings/[title]",
-                              query: {
-                                title: product.title,
-                                type: product.type[0].name,
-                                kota: product.kota[0].name,
-                              },
+                              pathname: "/all-listings/[slug]",
+                              query: { slug: product.slug },
                             }}
-                            as={`/all-listings/${encodeURIComponent(
-                              product.title
-                            )}?type=${encodeURIComponent(
-                              product.type[0].name
-                            )}&kota=${encodeURIComponent(
-                              product.kota[0].name
-                            )}`}
                           >
                             <div className="font-medium text-accent hover:underline">
                               Detail
